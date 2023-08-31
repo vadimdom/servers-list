@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { DEVICE_SIZES } from '../constants';
+import { DEVICE_SIZES } from '../../constants';
 
 export const LoginWrapper = styled.div`
   display: flex;

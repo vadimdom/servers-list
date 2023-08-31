@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 
-import { LoginPage } from './Login';
-import { ThemeProvider } from '../theme';
+import { LoginPage } from './LoginPage';
+import { ThemeProvider } from '../../theme';
 
 test('renders login page', () => {
   render(
