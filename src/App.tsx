@@ -1,8 +1,8 @@
 import { ThemeProvider } from './theme';
-import { AppRouter } from './AppRouter';
+import { Router } from './routing';
 
 export const App = () => (
   <ThemeProvider>
-    <AppRouter />
+    <Router />
   </ThemeProvider>
 );

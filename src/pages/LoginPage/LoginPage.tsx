@@ -2,7 +2,7 @@ import { LoginForm } from '../../components';
 import { LoginWrapper } from './LoginPage.styles';
 
 export const LoginPage = () => (
-  <LoginWrapper>
+  <LoginWrapper data-testid="login-page">
     <LoginForm />
   </LoginWrapper>
 );
