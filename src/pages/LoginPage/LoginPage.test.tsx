@@ -1,4 +1,4 @@
-import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 import { LoginPage } from './LoginPage';
 import { ThemeProvider } from '../../theme';
@@ -121,7 +121,7 @@ describe('<LoginPage />', () => {
     fireEvent.change(usernameInput, { target: { value: 'User' } });
     fireEvent.change(passwordInput, { target: { value: 'Pass' } });
 
-    act(() => fireEvent.click(signInButton));
+    fireEvent.click(signInButton);
 
     expect(login).toBeCalledWith({ username: 'User', password: 'Pass' });
     await waitFor(() => expect(localStorageSetItem).toBeCalledWith('token', '123123'));

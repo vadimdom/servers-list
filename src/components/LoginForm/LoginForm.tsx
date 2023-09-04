@@ -1,12 +1,12 @@
 import { useState, FormEvent, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useUserSession } from '../hooks';
-import { login } from '../services';
-import { Loader } from './Loader';
+import { useUserSession } from '../../hooks';
+import { login } from '../../services';
+import { Loader } from '../Loader';
 import { FormContainer, Form, ErrorMessage, Input, Button } from './LoginForm.styles';
-import { useAppDispatch } from '../redux';
-import { setUser } from '../redux/profileSlice';
+import { useAppDispatch } from '../../redux';
+import { setUser } from '../../redux/profileSlice';
 
 export const LoginForm = () => {
   const navigate = useNavigate();

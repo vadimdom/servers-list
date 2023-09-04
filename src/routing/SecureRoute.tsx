@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { useUserSession } from '../hooks';
-import { Loader } from '../components';
+import { Header, Loader } from '../components';
 
 export const SecureRoute = ({ element }: { element: ReactElement }) => {
   const { isUserSessionActive } = useUserSession();
@@ -11,5 +11,10 @@ export const SecureRoute = ({ element }: { element: ReactElement }) => {
 
   if (!isUserSessionActive) return <Navigate to="/" />;
 
-  return element;
+  return (
+    <>
+      <Header />
+      {element}
+    </>
+  );
 };
