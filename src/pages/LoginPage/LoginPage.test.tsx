@@ -5,6 +5,7 @@ import { ThemeProvider } from '../../theme';
 import { MemoryRouter } from 'react-router-dom';
 import { useUserSession } from '../../hooks';
 import { login } from '../../services';
+import { DEFAULT_PROFILE_IMAGE } from '../../constants';
 
 jest.mock('../../hooks');
 jest.mock('../../services');
@@ -125,7 +126,10 @@ describe('<LoginPage />', () => {
 
     expect(login).toBeCalledWith({ username: 'User', password: 'Pass' });
     await waitFor(() => expect(localStorageSetItem).toBeCalledWith('token', '123123'));
-    expect(mockedUseDispatch).toBeCalledWith({ payload: { name: 'User' }, type: 'profile/setUser' });
+    expect(mockedUseDispatch).toBeCalledWith({
+      payload: { name: 'User' },
+      type: 'profile/setUser',
+    });
     expect(mockedUseNavigate).toBeCalledWith('/servers');
   });
 });

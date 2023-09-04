@@ -1,8 +1,10 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { Profile } from './Profile';
 import { ThemeProvider } from '../../theme';
-import { MemoryRouter } from 'react-router-dom';
+import { BROKEN_DEFAULT_PROFILE_IMAGE, FALLBACK_IMAGE, DEFAULT_PROFILE_IMAGE } from '../../constants';
+import { useAppSelector } from '../../redux';
 
 const mockedUseNavigate = jest.fn();
 
@@ -12,12 +14,11 @@ jest.mock('react-router-dom', () => ({
 }));
 
 const mockedUseDispatch = jest.fn();
-const mockedUseSelector = jest.fn();
 
 jest.mock('../../redux', () => ({
   ...jest.requireActual('../../redux'),
   useAppDispatch: () => mockedUseDispatch,
-  useAppSelector: () => mockedUseSelector,
+  useAppSelector: jest.fn(),
 }));
 
 const renderProfile = () => {
@@ -42,7 +43,10 @@ Object.defineProperty(window, 'localStorage', {
 
 describe('<Profile />', () => {
   beforeEach(async () => {
-    mockedUseSelector.mockReturnValue({ name: 'User' });
+    (useAppSelector as jest.Mock).mockReturnValue({ name: 'User', image: DEFAULT_PROFILE_IMAGE });
+  });
+  afterEach(() => {
+    (useAppSelector as jest.Mock).mockClear();
   });
 
   test('should logout on logout click', async () => {
@@ -54,5 +58,20 @@ describe('<Profile />', () => {
     await waitFor(() => expect(localStorageRemoveItem).toBeCalledWith('token'));
     expect(mockedUseDispatch).toBeCalledWith({ payload: undefined, type: 'profile/removeUser' });
     expect(mockedUseNavigate).toBeCalledWith('/');
+  });
+  test('should display correct user image', () => {
+    renderProfile();
+
+    expect(useAppSelector).toHaveBeenCalled();
+    expect((screen.getByTestId('profile-image') as HTMLImageElement).src).toBe(DEFAULT_PROFILE_IMAGE);
+  });
+  test('should display fallback image, if user image is broken', () => {
+    (useAppSelector as jest.Mock).mockReturnValue({ name: 'User', image: BROKEN_DEFAULT_PROFILE_IMAGE });
+
+    renderProfile();
+
+    fireEvent.error(screen.getByTestId('profile-image'));
+
+    expect((screen.getByTestId('profile-image') as HTMLImageElement).src).toBe(FALLBACK_IMAGE);
   });
 });

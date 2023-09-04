@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { SyntheticEvent } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../redux';
-import { removeUser, selectUser } from '../../redux/profileSlice';
+import { useAppDispatch, useAppSelector, removeUser, selectUser } from '../../redux';
+import { DEFAULT_PROFILE_IMAGE, FALLBACK_IMAGE } from '../../constants';
 
 const ProfileImage = styled.img`
   width: 30px;
@@ -35,7 +36,11 @@ export const Profile = () => {
   return (
     <ProfileContainer>
       <LogoutContainer onClick={onLogout}>Logout</LogoutContainer>
-      <ProfileImage src={user?.image} />
+      <ProfileImage
+        data-testid="profile-image"
+        src={user?.image || DEFAULT_PROFILE_IMAGE}
+        onError={(e: SyntheticEvent<HTMLImageElement, Event>) => (e.currentTarget.src = FALLBACK_IMAGE)}
+      />
     </ProfileContainer>
   );
 };

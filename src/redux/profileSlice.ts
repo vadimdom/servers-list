@@ -1,12 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type { RootState } from './store';
+import { UserType } from '../types';
 
 interface ProfileState {
-  user: {
-    name: string;
-    image?: string;
-  } | null;
+  user: UserType | null;
 }
 
 const initialState: ProfileState = {
@@ -17,7 +15,7 @@ export const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<{ name: string; image?: string }>) => {
+    setUser: (state, action: PayloadAction<UserType>) => {
       const { payload } = action;
       state.user = { name: payload.name, image: payload.image };
     },
