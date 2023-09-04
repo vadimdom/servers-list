@@ -1,8 +1,11 @@
 import { ThemeProvider } from './theme';
 import { Router } from './routing';
+import { ReduxStoreProvider } from './redux';
 
 export const App = () => (
-  <ThemeProvider>
-    <Router />
-  </ThemeProvider>
+  <ReduxStoreProvider>
+    <ThemeProvider>
+      <Router />
+    </ThemeProvider>
+  </ReduxStoreProvider>
 );

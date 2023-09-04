@@ -16,6 +16,13 @@ jest.mock('react-router-dom', () => ({
   useNavigate: () => mockedUseNavigate,
 }));
 
+const mockedUseDispatch = jest.fn();
+
+jest.mock('../../redux', () => ({
+  ...jest.requireActual('../../redux'),
+  useAppDispatch: () => mockedUseDispatch,
+}));
+
 const renderLoginPage = () => {
   render(
     <MemoryRouter>
@@ -118,6 +125,7 @@ describe('<LoginPage />', () => {
 
     expect(login).toBeCalledWith({ username: 'User', password: 'Pass' });
     await waitFor(() => expect(localStorageSetItem).toBeCalledWith('token', '123123'));
-    await waitFor(() => expect(mockedUseNavigate).toBeCalledWith('/servers'));
+    expect(mockedUseDispatch).toBeCalledWith({ payload: { name: 'User' }, type: 'profile/setUser' });
+    expect(mockedUseNavigate).toBeCalledWith('/servers');
   });
 });

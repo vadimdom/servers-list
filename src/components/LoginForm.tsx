@@ -5,9 +5,12 @@ import { useUserSession } from '../hooks';
 import { login } from '../services';
 import { Loader } from './Loader';
 import { FormContainer, Form, ErrorMessage, Input, Button } from './LoginForm.styles';
+import { useAppDispatch } from '../redux';
+import { setUser } from '../redux/profileSlice';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { isUserSessionActive } = useUserSession();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -26,6 +29,7 @@ export const LoginForm = () => {
       setIsLoginProcessing(false);
     } else if (loginResult.token) {
       localStorage.setItem('token', loginResult.token);
+      dispatch(setUser({ name: username }));
       navigate('/servers');
     }
   };
