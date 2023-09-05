@@ -3,11 +3,13 @@ import { ServerType } from '../../types';
 import { ServerItemContainer, ServerIcon, NameContainer, DistanceContainer } from './ServerItem.styles';
 
 export const ServerItem = ({ server }: { server: ServerType }) => (
-  <ServerItemContainer key={`${server.name}-${server.distance}`}>
+  <ServerItemContainer data-cy="server-item" key={`${server.name}-${server.distance}`}>
     <NameContainer>
       <ServerIcon />
-      <span>{server.name}</span>
+      <span data-cy="server-name">{server.name}</span>
     </NameContainer>
-    <DistanceContainer $color={getColorByDistance(server.distance)}>{server.distance}</DistanceContainer>
+    <DistanceContainer data-cy="server-distance" $color={getColorByDistance(server.distance)}>
+      {server.distance}
+    </DistanceContainer>
   </ServerItemContainer>
 );

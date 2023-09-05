@@ -18,7 +18,9 @@ export const Profile = () => {
 
   return (
     <ProfileContainer>
-      <LogoutContainer onClick={onLogout}>Logout</LogoutContainer>
+      <LogoutContainer data-cy="logout" onClick={onLogout}>
+        Logout
+      </LogoutContainer>
       <ImageAndNameContainer>
         <ProfileImage
           data-testid="profile-image"

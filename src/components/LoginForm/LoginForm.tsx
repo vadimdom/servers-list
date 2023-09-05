@@ -78,6 +78,7 @@ export const LoginForm = () => {
             aria-label="username-input"
             placeholder="Your username"
             value={username}
+            data-cy="username-input"
             $isWithError={!!usernameError || !!errorMessage}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
           />
@@ -88,6 +89,7 @@ export const LoginForm = () => {
             aria-label="password-input"
             type="password"
             placeholder="Your password"
+            data-cy="password-input"
             value={password}
             $isWithError={!!passwordError || !!errorMessage}
             onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}

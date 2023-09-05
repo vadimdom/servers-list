@@ -56,16 +56,16 @@ export const ServersPage = () => {
           {servers.length ? (
             <>
               <ServersListHeader>
-                <ListHeader data-testid="sort-by-name" onClick={sortByName}>
+                <ListHeader data-cy="sort-by-name" data-testid="sort-by-name" onClick={sortByName}>
                   <span>Name</span>
                   <SortMarker rule={nameSortRule} />
                 </ListHeader>
-                <ListHeader data-testid="sort-by-distance" onClick={sortByDistance}>
+                <ListHeader data-cy="sort-by-distance" data-testid="sort-by-distance" onClick={sortByDistance}>
                   <span>Distance</span>
                   <SortMarker rule={distanceSortRule} />
                 </ListHeader>
               </ServersListHeader>
-              <Servers data-testid="servers-list">
+              <Servers data-cy="servers-list" data-testid="servers-list">
                 {servers.map((server) => (
                   <ServerItem key={`${server.name}-${server.distance}`} server={server} />
                 ))}
