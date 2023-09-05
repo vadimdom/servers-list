@@ -7,7 +7,7 @@ export const FormContainer = styled.div`
   gap: 8px;
   width: 300px;
   border-radius: 8px;
-  padding: 16px 8px;
+  padding: 16px;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: rgba(79, 192, 249, 0.24) 0px 3px 8px;
   transition: all 0.2s linear;
@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
 
   @media (min-width: ${DEVICE_SIZES.tablet}) {
     &:hover {
-      padding: 20px 12px;
+      padding: 20px;
     }
   }
 `;
@@ -36,11 +36,24 @@ export const FormCaption = styled.span`
   color: ${({ theme }) => theme.color.darkBlue};
 `;
 
+export const InputContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2px;
+`;
+
 export const ErrorMessage = styled.span<{ $isVisible: boolean }>`
   height: 20px;
   visibility: ${({ $isVisible }) => ($isVisible ? 'visible' : 'hidden')};
   color: ${({ theme }) => theme.color.red};
   font-size: 12px;
+`;
+
+export const InputErrorMessage = styled(ErrorMessage)`
+  height: 12px;
+  font-size: 10px;
 `;
 
 export const Input = styled.input<{ $isWithError: boolean }>`
@@ -49,6 +62,7 @@ export const Input = styled.input<{ $isWithError: boolean }>`
   padding: 8px;
   transition: all 0.3s linear;
   background: transparent;
+  width: -webkit-fill-available;
 `;
 
 export const Button = styled.button`

@@ -5,7 +5,7 @@ import { ThemeProvider } from '../../theme';
 import { MemoryRouter } from 'react-router-dom';
 import { useUserSession } from '../../hooks';
 import { login } from '../../services';
-import { DEFAULT_PROFILE_IMAGE } from '../../constants';
+import { MIN_PASSWORD_LENGTH, MIN_USERNAME_LENGTH } from '../../constants';
 
 jest.mock('../../hooks');
 jest.mock('../../services');
@@ -75,17 +75,22 @@ describe('<LoginPage />', () => {
 
     expect(screen.getByText(/Login/i)).toBeInTheDocument();
   });
-  test('change input values', () => {
+  test('change input values and display input errors', () => {
     renderLoginPage();
 
     const usernameInput: HTMLInputElement = screen.getByLabelText('username-input');
     const passwordInput: HTMLInputElement = screen.getByLabelText('password-input');
 
-    fireEvent.change(usernameInput, { target: { value: 'User' } });
+    fireEvent.change(usernameInput, { target: { value: 'Us' } });
     fireEvent.change(passwordInput, { target: { value: 'Pass' } });
 
-    expect(usernameInput.value).toBe('User');
+    const signInButton: HTMLButtonElement = screen.getByRole('button');
+
+    expect(usernameInput.value).toBe('Us');
     expect(passwordInput.value).toBe('Pass');
+    expect(signInButton.disabled).toBeTruthy();
+    expect(screen.getByText(`Username should be at least ${MIN_USERNAME_LENGTH} characters`)).toBeInTheDocument();
+    expect(screen.getByText(`Password should be at least ${MIN_PASSWORD_LENGTH} characters`)).toBeInTheDocument();
   });
   test('sign in button should be disabled and display loader on click', async () => {
     renderLoginPage();
@@ -93,7 +98,7 @@ describe('<LoginPage />', () => {
     const passwordInput: HTMLInputElement = screen.getByLabelText('password-input');
 
     fireEvent.change(usernameInput, { target: { value: 'User' } });
-    fireEvent.change(passwordInput, { target: { value: 'Pass' } });
+    fireEvent.change(passwordInput, { target: { value: 'Password' } });
 
     const signInButton: HTMLButtonElement = screen.getByRole('button');
 
@@ -111,11 +116,11 @@ describe('<LoginPage />', () => {
     const signInButton: HTMLButtonElement = screen.getByRole('button');
 
     fireEvent.change(usernameInput, { target: { value: 'User' } });
-    fireEvent.change(passwordInput, { target: { value: 'Pass' } });
+    fireEvent.change(passwordInput, { target: { value: 'Password' } });
 
     fireEvent.click(signInButton);
 
-    expect(login).toBeCalledWith({ username: 'User', password: 'Pass' });
+    expect(login).toBeCalledWith({ username: 'User', password: 'Password' });
     await waitFor(() => expect(screen.getByText('Wrong username or/and password!')).toBeInTheDocument());
   });
   test('set token to localStorage and navigate to /servers', async () => {
@@ -129,11 +134,11 @@ describe('<LoginPage />', () => {
     const signInButton: HTMLButtonElement = screen.getByRole('button');
 
     fireEvent.change(usernameInput, { target: { value: 'User' } });
-    fireEvent.change(passwordInput, { target: { value: 'Pass' } });
+    fireEvent.change(passwordInput, { target: { value: 'Password' } });
 
     fireEvent.click(signInButton);
 
-    expect(login).toBeCalledWith({ username: 'User', password: 'Pass' });
+    expect(login).toBeCalledWith({ username: 'User', password: 'Password' });
     await waitFor(() => expect(localStorageSetItem).toBeCalledWith('token', '123123'));
     expect(mockedUseDispatch).toBeCalledWith({
       payload: { name: 'User' },
