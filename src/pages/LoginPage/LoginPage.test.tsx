@@ -49,6 +49,10 @@ describe('<LoginPage />', () => {
     (useUserSession as jest.Mock).mockReturnValue({ isUserSessionActive: false });
     (login as jest.Mock).mockReturnValue({ message: 'Error' });
   });
+  afterEach(async () => {
+    (useUserSession as jest.Mock).mockClear();
+    (login as jest.Mock).mockClear();
+  });
 
   test('renders only loader if isUserSessionActive = null', () => {
     (useUserSession as jest.Mock).mockReturnValue({ isUserSessionActive: null });
@@ -85,6 +89,11 @@ describe('<LoginPage />', () => {
   });
   test('sign in button should be disabled and display loader on click', async () => {
     renderLoginPage();
+    const usernameInput: HTMLInputElement = screen.getByLabelText('username-input');
+    const passwordInput: HTMLInputElement = screen.getByLabelText('password-input');
+
+    fireEvent.change(usernameInput, { target: { value: 'User' } });
+    fireEvent.change(passwordInput, { target: { value: 'Pass' } });
 
     const signInButton: HTMLButtonElement = screen.getByRole('button');
 

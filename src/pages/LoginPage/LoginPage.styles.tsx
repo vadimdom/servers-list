@@ -12,6 +12,6 @@ export const LoginWrapper = styled.div`
 
   @media (max-width: ${DEVICE_SIZES.tablet}) {
     align-items: start;
-    padding-top: 30px;
+    padding: 30px 20px;
   }
 `;

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useUserSession } from '../../hooks';
 import { login } from '../../services';
 import { Loader } from '../Loader';
-import { FormContainer, Form, ErrorMessage, Input, Button } from './LoginForm.styles';
+import { FormContainer, Form, ErrorMessage, Input, Button, FormCaption } from './LoginForm.styles';
 import { useAppDispatch } from '../../redux';
 import { setUser } from '../../redux/profileSlice';
 
@@ -43,12 +43,13 @@ export const LoginForm = () => {
 
   return (
     <FormContainer>
-      <span>Login</span>
+      <FormCaption>Login</FormCaption>
       <Form onSubmit={onSubmit}>
         <Input
           aria-label="username-input"
           placeholder="Your username"
           value={username}
+          $isWithError={!!errorMessage}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
         />
         <Input
@@ -56,9 +57,10 @@ export const LoginForm = () => {
           type="password"
           placeholder="Your password"
           value={password}
+          $isWithError={!!errorMessage}
           onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
         />
-        <Button type="submit" disabled={isLoginProcessing}>
+        <Button type="submit" disabled={isLoginProcessing || !username || !password}>
           {isLoginProcessing ? <Loader data-testid="sign-in-loader" $sizePX={16} /> : 'Sign In'}
         </Button>
       </Form>

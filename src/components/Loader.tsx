@@ -1,8 +1,8 @@
 import { styled } from 'styled-components';
 
 export const Loader = styled.div<{ $sizePX: number }>`
-  border: ${({ $sizePX }) => ($sizePX / 5 > 12 ? 12 : $sizePX / 5)}px solid #f3f3f3;
-  border-top: ${({ $sizePX }) => ($sizePX / 5 > 12 ? 12 : $sizePX / 5)}px solid ${({ theme }) => theme.color.blue};
+  border: ${({ $sizePX }) => ($sizePX / 5 > 12 ? 12 : $sizePX / 5)}px solid ${({ theme }) => theme.color.white};
+  border-top: ${({ $sizePX }) => ($sizePX / 5 > 12 ? 12 : $sizePX / 5)}px solid ${({ theme }) => theme.color.darkBlue};
   border-radius: 50%;
   height: ${({ $sizePX }) => $sizePX}px;
   width: ${({ $sizePX }) => $sizePX}px;

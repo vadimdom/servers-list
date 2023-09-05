@@ -44,6 +44,9 @@ describe('<ServersPage />', () => {
   beforeEach(async () => {
     (getServers as jest.Mock).mockReturnValue(LIST_OF_SERVERS);
   });
+  afterEach(async () => {
+    (getServers as jest.Mock).mockClear();
+  });
 
   test('renders loader, description and no servers message', async () => {
     (getServers as jest.Mock).mockReturnValue([]);

@@ -1,28 +1,6 @@
-import { styled } from 'styled-components';
-
+import { getColorByDistance } from '../../helpers';
 import { ServerType } from '../../types';
-import { ReactComponent as ServerImage } from './server.svg';
-
-const ServerItemContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 4px 20px;
-  border: 1px solid ${({ theme }) => theme.color.blue};
-  border-radius: 4px;
-  gap: 10px;
-`;
-
-const ServerIcon = styled(ServerImage)`
-  width: 30px;
-  height: 30px;
-`;
-
-const NameContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
+import { ServerItemContainer, ServerIcon, NameContainer, DistanceContainer } from './ServerItem.styles';
 
 export const ServerItem = ({ server }: { server: ServerType }) => (
   <ServerItemContainer key={`${server.name}-${server.distance}`}>
@@ -30,6 +8,6 @@ export const ServerItem = ({ server }: { server: ServerType }) => (
       <ServerIcon />
       <span>{server.name}</span>
     </NameContainer>
-    <span>{server.distance}</span>
+    <DistanceContainer $color={getColorByDistance(server.distance)}>{server.distance}</DistanceContainer>
   </ServerItemContainer>
 );
