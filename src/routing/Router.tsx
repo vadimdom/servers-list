@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 
 import { LoginPage, ServersPage } from '../pages';
 import { SecureRoute } from './SecureRoute';
 
 export const Router = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
       <Route path="/" element={<LoginPage />} />
       <Route path="/servers" element={<SecureRoute element={<ServersPage />} />} />
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );

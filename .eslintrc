@@ -19,7 +19,7 @@
     "@typescript-eslint/no-unused-vars": "warn"
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": "latest",
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -27,9 +27,10 @@
   },
   "env": {
     "browser": true,
+    "es2021": true,
     "node": true,
     "es6": true,
     "jest": true
   },
-  "ignorePatterns": ["node_modules", "public", ".husky", "reportWebVitals.ts"]
+  "ignorePatterns": ["node_modules", "public", ".husky", "build", "coverage", "reportWebVitals.ts"]
 }
