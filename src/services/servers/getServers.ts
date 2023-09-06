@@ -1,6 +1,6 @@
 import { ServerType } from '../../types';
 
-export const getServers = async (): Promise<ServerType[]> => {
+export const getServers = async (): Promise<ServerType[] | { message: string }> => {
   const storageToken = localStorage.getItem('token');
 
   const result = fetch('https://playground.tesonet.lt/v1/servers', {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { getServers } from '../../services';
 import { CountryFilter, Loader, ServerItem, SortMarker } from '../../components';
@@ -15,6 +16,7 @@ import { ascendingSort, descendingSort } from '../../helpers';
 import { COUNTRY_FULL_NAMES } from '../../constants';
 
 export const ServersPage = () => {
+  const navigate = useNavigate();
   const [servers, setServers] = useState<ServerType[]>([]);
   const [filteredServers, setFilteredServers] = useState<ServerType[]>([]);
   const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
@@ -26,12 +28,18 @@ export const ServersPage = () => {
     const fetchServers = async () => {
       const result = await getServers();
 
+      if ((result as { message: string }).message === 'Unauthorized') {
+        localStorage.removeItem('token');
+        navigate('/');
+      } else {
+        setServers(result as ServerType[]);
+      }
+
       setIsLoaded(true);
-      setServers(result);
     };
 
     fetchServers();
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     if (selectedCountries.length) {

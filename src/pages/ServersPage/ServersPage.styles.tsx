@@ -6,7 +6,7 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 70px 30px 50px 30px;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
 `;
 
 export const PageDescription = styled.p`

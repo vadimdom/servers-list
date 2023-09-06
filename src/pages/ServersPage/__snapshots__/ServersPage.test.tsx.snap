@@ -29,7 +29,7 @@ exports[`<ServersPage /> renders loader, description and no servers message 1`] 
   flex-direction: column;
   align-items: center;
   padding: 70px 30px 50px 30px;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
 }
 
 .c1 {
@@ -187,7 +187,7 @@ exports[`<ServersPage /> should sort by server name 1`] = `
   flex-direction: column;
   align-items: center;
   padding: 70px 30px 50px 30px;
-  min-height: 100vh;
+  min-height: calc(100vh - 120px);
 }
 
 .c1 {

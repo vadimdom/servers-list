@@ -1,7 +1,6 @@
 import { useState, FormEvent, ChangeEvent, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useUserSession } from '../../hooks';
 import { login } from '../../services';
 import { Loader } from '../Loader';
 import {
@@ -21,7 +20,6 @@ import { MIN_PASSWORD_LENGTH, MIN_USERNAME_LENGTH } from '../../constants';
 export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const { isUserSessionActive } = useUserSession();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isLoginProcessing, setIsLoginProcessing] = useState<boolean>(false);
@@ -61,13 +59,6 @@ export const LoginForm = () => {
       navigate('/servers');
     }
   };
-
-  if (isUserSessionActive === null) return <Loader data-testid="loader" $sizePX={100} />;
-
-  if (isUserSessionActive) {
-    navigate('/servers');
-    return null;
-  }
 
   return (
     <FormContainer>
