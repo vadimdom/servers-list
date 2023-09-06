@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import { getServers } from '../../services';
-import { Loader, ServerItem, SortMarker } from '../../components';
-import { ServerType, SortRuleType } from '../../types';
+import { CountryFilter, Loader, ServerItem, SortMarker } from '../../components';
+import { Country, ServerType, SortRuleType } from '../../types';
 import {
   PageWrapper,
   PageDescription,
@@ -12,9 +12,12 @@ import {
   ListHeader,
 } from './ServersPage.styles';
 import { ascendingSort, descendingSort } from '../../helpers';
+import { COUNTRY_FULL_NAMES } from '../../constants';
 
 export const ServersPage = () => {
   const [servers, setServers] = useState<ServerType[]>([]);
+  const [filteredServers, setFilteredServers] = useState<ServerType[]>([]);
+  const [selectedCountries, setSelectedCountries] = useState<Country[]>([]);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [nameSortRule, setNameSortRule] = useState<SortRuleType>(null);
   const [distanceSortRule, setDistanceSortRule] = useState<SortRuleType>(null);
@@ -29,6 +32,19 @@ export const ServersPage = () => {
 
     fetchServers();
   }, []);
+
+  useEffect(() => {
+    if (selectedCountries.length) {
+      const countryFullNames = selectedCountries.map((country) => COUNTRY_FULL_NAMES[country]);
+      const serversFromSelectedCountries = servers.filter(
+        (server) =>
+          !!countryFullNames.filter((countryFullName) => server.name.toLowerCase().includes(countryFullName)).length
+      );
+      setFilteredServers(serversFromSelectedCountries);
+    } else {
+      setFilteredServers(servers);
+    }
+  }, [selectedCountries, servers]);
 
   const sortByName = () => {
     const sortedServers = [...servers].sort((a, b) =>
@@ -48,12 +64,25 @@ export const ServersPage = () => {
     setServers(sortedServers);
   };
 
+  const onFlagSelect = (country: Country) => {
+    if (selectedCountries.includes(country)) {
+      setSelectedCountries(selectedCountries.filter((selCountry) => selCountry !== country));
+    } else {
+      setSelectedCountries([...selectedCountries, country]);
+    }
+  };
+
   return (
     <PageWrapper data-testid="servers-page">
       <PageDescription>Here is the list of all available servers:</PageDescription>
       {isLoaded ? (
         <ServersList>
-          {servers.length ? (
+          <CountryFilter
+            selectedFlags={selectedCountries}
+            onFlagClick={onFlagSelect}
+            onClear={() => setSelectedCountries([])}
+          />
+          {filteredServers.length ? (
             <>
               <ServersListHeader>
                 <ListHeader data-cy="sort-by-name" data-testid="sort-by-name" onClick={sortByName}>
@@ -66,7 +95,7 @@ export const ServersPage = () => {
                 </ListHeader>
               </ServersListHeader>
               <Servers data-cy="servers-list" data-testid="servers-list">
-                {servers.map((server) => (
+                {filteredServers.map((server) => (
                   <ServerItem key={`${server.name}-${server.distance}`} server={server} />
                 ))}
               </Servers>

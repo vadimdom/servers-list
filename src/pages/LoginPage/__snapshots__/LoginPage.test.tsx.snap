@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginPage /> renders login form 1`] = `
+.c1 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 300px;
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(79, 192, 249, 0.24) 0px 3px 8px;
+  transition: all 0.2s linear;
+}
+
+.c1:hover {
+  box-shadow: rgba(79, 192, 249, 0.5) 0px 10px 20px;
+  background: #ffffff;
+}
+
+.c3 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #234d73;
+}
+
+.c4 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2px;
+}
+
+.c6 {
+  height: 20px;
+  visibility: hidden;
+  color: #ff0000;
+  font-size: 12px;
+}
+
+.c7 {
+  height: 12px;
+  font-size: 10px;
+}
+
+.c5 {
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 8px;
+  transition: all 0.3s linear;
+  background: transparent;
+  width: -webkit-fill-available;
+}
+
+.c8 {
+  border: 1px solid #1596eb;
+  border-radius: 8px;
+  padding: 8px;
+  height: 40px;
+  color: #ffffff;
+  font-weight: bold;
+  background: #1596eb;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  box-shadow: rgba(79, 192, 249, 0.24) 0px 3px 8px;
+}
+
+.c8:hover {
+  background: #5bb3ee;
+}
+
+.c8:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.c8:disabled:hover {
+  background: #1596eb;
+}
+
+.c0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s linear;
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .c1:hover {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .c0 {
+    align-items: start;
+    padding: 30px 20px;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="login-page"
+>
+  <div
+    class="c1"
+  >
+    <span
+      class="c2"
+    >
+      Login
+    </span>
+    <form
+      class="c3"
+    >
+      <div
+        class="c4"
+      >
+        <input
+          aria-label="username-input"
+          class="c5"
+          data-cy="username-input"
+          placeholder="Your username"
+          value=""
+        />
+        <span
+          class="c6 c7"
+        />
+      </div>
+      <div
+        class="c4"
+      >
+        <input
+          aria-label="password-input"
+          class="c5"
+          data-cy="password-input"
+          placeholder="Your password"
+          type="password"
+          value=""
+        />
+        <span
+          class="c6 c7"
+        />
+      </div>
+      <button
+        class="c8"
+        disabled=""
+        type="submit"
+      >
+        Sign In
+      </button>
+    </form>
+    <span
+      class="c6"
+    />
+  </div>
+</div>
+`;

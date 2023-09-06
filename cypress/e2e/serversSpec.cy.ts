@@ -1,4 +1,4 @@
-import { ascendingSort, descendingSort } from '../../src/helpers';
+import { ascendingSort, descendingSort } from '../../src/helpers/sorting';
 
 describe('test servers page', () => {
   it('should redirect to login, if not logged in', () => {

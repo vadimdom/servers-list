@@ -17,7 +17,7 @@ export const Profile = () => {
   };
 
   return (
-    <ProfileContainer>
+    <ProfileContainer data-testid="profile">
       <LogoutContainer data-cy="logout" onClick={onLogout}>
         Logout
       </LogoutContainer>

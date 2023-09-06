@@ -1,4 +1,5 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import 'jest-styled-components';
 
 import { LoginPage } from './LoginPage';
 import { ThemeProvider } from '../../theme';
@@ -74,6 +75,7 @@ describe('<LoginPage />', () => {
     renderLoginPage();
 
     expect(screen.getByText(/Login/i)).toBeInTheDocument();
+    expect(screen.getByTestId('login-page')).toMatchSnapshot();
   });
   test('change input values and display input errors', () => {
     renderLoginPage();

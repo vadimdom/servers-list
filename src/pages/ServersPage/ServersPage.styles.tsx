@@ -5,7 +5,6 @@ export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 70px 30px 50px 30px;
   min-height: 100vh;
 `;
@@ -27,6 +26,7 @@ export const PageDescription = styled.p`
 export const ServersList = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 8px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.6);
   color: ${({ theme }) => theme.color.darkBlue};
@@ -43,7 +43,6 @@ export const ServersList = styled.div`
 export const Servers = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 10px;
   gap: 8px;
 `;
 

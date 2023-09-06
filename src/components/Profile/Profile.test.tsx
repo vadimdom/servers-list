@@ -1,5 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import 'jest-styled-components';
 
 import { Profile } from './Profile';
 import { ThemeProvider } from '../../theme';
@@ -53,6 +54,7 @@ describe('<Profile />', () => {
     const localStorageRemoveItem = jest.spyOn(localStorage, 'removeItem');
     renderProfile();
 
+    expect(screen.getByTestId('profile')).toMatchSnapshot();
     fireEvent.click(screen.getByText('Logout'));
 
     await waitFor(() => expect(localStorageRemoveItem).toBeCalledWith('token'));

@@ -1,0 +1,452 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ServersPage /> renders loader, description and no servers message 1`] = `
+.c3 {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.c5 {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0.5;
+  border: 2px solid #000000;
+}
+
+.c4 {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.c0 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 30px 50px 30px;
+  min-height: 100vh;
+}
+
+.c1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #234d73;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #234d73;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .c1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .c2 {
+    max-width: 80%;
+    padding: 10px;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="servers-page"
+>
+  <p
+    class="c1"
+  >
+    Here is the list of all available servers:
+  </p>
+  <div
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      <span>
+        Filter by countries:
+      </span>
+      <div
+        class="c4"
+        data-testid="country-flags"
+      >
+        <img
+          class="c5"
+          src="uk.svg"
+        />
+        <img
+          class="c5"
+          src="us.svg"
+        />
+        <img
+          class="c5"
+          src="de.svg"
+        />
+        <img
+          class="c5"
+          src="ja.svg"
+        />
+      </div>
+    </div>
+    <span>
+      No available servers
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<ServersPage /> should sort by server name 1`] = `
+.c9 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 20px;
+  background: #ffffff;
+  border-radius: 4px;
+  gap: 10px;
+  box-shadow: rgba(79, 192, 249, 0.24) 0px 3px 8px;
+  transition: all 0.1s linear;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.c9:hover {
+  box-shadow: rgba(79, 192, 249, 0.5) 0px 4px 15px;
+  transform: translateY(1px);
+  background: #ecf5fd;
+}
+
+.c11 {
+  width: 30px;
+  height: 30px;
+}
+
+.c10 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.c12 {
+  width: 20px;
+  height: 20px;
+}
+
+.c13 {
+  color: #ffa500;
+}
+
+.c14 {
+  color: #008000;
+}
+
+.c3 {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.c5 {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0.5;
+  border: 2px solid #000000;
+}
+
+.c4 {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.c0 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 70px 30px 50px 30px;
+  min-height: 100vh;
+}
+
+.c1 {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #234d73;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #234d73;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.c8 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.c6 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c7 {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .c9 {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .c11 {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .c1 {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .c2 {
+    max-width: 80%;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .c7 {
+    font-size: 14px;
+  }
+}
+
+<div
+  class="c0"
+  data-testid="servers-page"
+>
+  <p
+    class="c1"
+  >
+    Here is the list of all available servers:
+  </p>
+  <div
+    class="c2"
+  >
+    <div
+      class="c3"
+    >
+      <span>
+        Filter by countries:
+      </span>
+      <div
+        class="c4"
+        data-testid="country-flags"
+      >
+        <img
+          class="c5"
+          src="uk.svg"
+        />
+        <img
+          class="c5"
+          src="us.svg"
+        />
+        <img
+          class="c5"
+          src="de.svg"
+        />
+        <img
+          class="c5"
+          src="ja.svg"
+        />
+      </div>
+    </div>
+    <div
+      class="c6"
+    >
+      <div
+        class="c7"
+        data-cy="sort-by-name"
+        data-testid="sort-by-name"
+      >
+        <span>
+          Name
+        </span>
+      </div>
+      <div
+        class="c7"
+        data-cy="sort-by-distance"
+        data-testid="sort-by-distance"
+      >
+        <span>
+          Distance
+        </span>
+      </div>
+    </div>
+    <div
+      class="c8"
+      data-cy="servers-list"
+      data-testid="servers-list"
+    >
+      <div
+        class="c9"
+        data-cy="server-item"
+      >
+        <div
+          class="c10"
+        >
+          <svg
+            class="c11"
+          >
+            server.svg
+          </svg>
+          <img
+            class="c12"
+            src="de.svg"
+          />
+          <span
+            data-cy="server-name"
+          >
+            Germany
+          </span>
+        </div>
+        <div
+          class="c13"
+          data-cy="server-distance"
+        >
+          711
+        </div>
+      </div>
+      <div
+        class="c9"
+        data-cy="server-item"
+      >
+        <div
+          class="c10"
+        >
+          <svg
+            class="c11"
+          >
+            server.svg
+          </svg>
+          <img
+            class="c12"
+            src=""
+          />
+          <span
+            data-cy="server-name"
+          >
+            Third
+          </span>
+        </div>
+        <div
+          class="c14"
+          data-cy="server-distance"
+        >
+          123
+        </div>
+      </div>
+      <div
+        class="c9"
+        data-cy="server-item"
+      >
+        <div
+          class="c10"
+        >
+          <svg
+            class="c11"
+          >
+            server.svg
+          </svg>
+          <img
+            class="c12"
+            src="ja.svg"
+          />
+          <span
+            data-cy="server-name"
+          >
+            Japan
+          </span>
+        </div>
+        <div
+          class="c13"
+          data-cy="server-distance"
+        >
+          1213
+        </div>
+      </div>
+      <div
+        class="c9"
+        data-cy="server-item"
+      >
+        <div
+          class="c10"
+        >
+          <svg
+            class="c11"
+          >
+            server.svg
+          </svg>
+          <img
+            class="c12"
+            src="ja.svg"
+          />
+          <span
+            data-cy="server-name"
+          >
+            Japan
+          </span>
+        </div>
+        <div
+          class="c14"
+          data-cy="server-distance"
+        >
+          123
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

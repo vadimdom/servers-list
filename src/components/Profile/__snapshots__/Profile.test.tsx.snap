@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Profile /> should logout on logout click 1`] = `
+.c0 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.c2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.c3 {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #1596eb;
+}
+
+.c1 {
+  cursor: pointer;
+  transition: color 0.2s linear;
+}
+
+.c1:hover {
+  color: #1596eb;
+}
+
+<div
+  class="c0"
+  data-testid="profile"
+>
+  <span
+    class="c1"
+    data-cy="logout"
+  >
+    Logout
+  </span>
+  <div
+    class="c2"
+  >
+    <img
+      class="c3"
+      data-testid="profile-image"
+      src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+    />
+    <span>
+      User
+    </span>
+  </div>
+</div>
+`;

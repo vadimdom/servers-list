@@ -30,12 +30,21 @@ export const ServerItemContainer = styled.div`
 export const ServerIcon = styled(ServerImage)`
   width: 30px;
   height: 30px;
+
+  @media (max-width: ${DEVICE_SIZES.tablet}) {
+    display: none;
+  }
 `;
 
 export const NameContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+`;
+
+export const FlagContainer = styled.img`
+  width: 20px;
+  height: 20px;
 `;
 
 export const DistanceContainer = styled.div<{ $color: string }>`
